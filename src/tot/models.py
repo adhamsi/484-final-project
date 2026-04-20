@@ -1,23 +1,19 @@
 import os
-import openai
+from openai import OpenAI
 import backoff 
+
+# Initialize client (it automatically finds OPENAI_API_KEY)
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),
+    base_url=os.getenv("OPENAI_API_BASE") or None
+)
 
 completion_tokens = prompt_tokens = 0
 
-api_key = os.getenv("OPENAI_API_KEY", "")
-if api_key != "":
-    openai.api_key = api_key
-else:
-    print("Warning: OPENAI_API_KEY is not set")
-    
-api_base = os.getenv("OPENAI_API_BASE", "")
-if api_base != "":
-    print("Warning: OPENAI_API_BASE is set to {}".format(api_base))
-    openai.api_base = api_base
-
-@backoff.on_exception(backoff.expo, openai.error.OpenAIError)
+# Updated to modern Exception class
+@backoff.on_exception(backoff.expo, Exception)
 def completions_with_backoff(**kwargs):
-    return openai.ChatCompletion.create(**kwargs)
+    return client.chat.completions.create(**kwargs)
 
 def gpt(prompt, model="gpt-4o-mini", temperature=0.7, max_tokens=1000, n=1, stop=None) -> list:
     messages = [{"role": "user", "content": prompt}]
@@ -25,21 +21,28 @@ def gpt(prompt, model="gpt-4o-mini", temperature=0.7, max_tokens=1000, n=1, stop
     
 def chatgpt(messages, model="gpt-4o-mini", temperature=0.7, max_tokens=1000, n=1, stop=None) -> list:
     global completion_tokens, prompt_tokens
-    print(messages)
-    outputs = []
-    while n > 0:
-        cnt = min(n, 20)
-        n -= cnt
-        res = completions_with_backoff(model=model, messages=messages, temperature=temperature, max_tokens=max_tokens, n=cnt, stop=stop)
-        outputs.extend([choice.message.content for choice in res.choices])
-        # log completion tokens
-        completion_tokens += res.usage.completion_tokens
-        prompt_tokens += res.usage.prompt_tokens
-    print(outputs)
-    return outputs
+    print(f"Sending request to {model}...")
     
+    # Modern response handling
+    res = completions_with_backoff(
+        model=model, 
+        messages=messages, 
+        temperature=temperature, 
+        max_tokens=max_tokens, 
+        n=n, 
+        stop=stop
+    )
+    
+    # Access attributes directly (no longer a dictionary)
+    outputs = [choice.message.content for choice in res.choices]
+    
+    completion_tokens += res.usage.completion_tokens
+    prompt_tokens += res.usage.prompt_tokens
+    
+    print(f"Received {len(outputs)} responses.")
+    return outputs
+
 def gpt_usage(backend="gpt-4o-mini"):
-    global completion_tokens, prompt_tokens
-    if backend == "gpt-4o-mini":
-        cost = completion_tokens / 1000 * 0.06 + prompt_tokens / 1000 * 0.015
+    # Updated pricing for gpt-4o-mini (approx $0.15/1M input, $0.60/1M output)
+    cost = (prompt_tokens / 1_000_000 * 0.15) + (completion_tokens / 1_000_000 * 0.60)
     return {"completion_tokens": completion_tokens, "prompt_tokens": prompt_tokens, "cost": cost}
