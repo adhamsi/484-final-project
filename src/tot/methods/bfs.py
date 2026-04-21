@@ -72,6 +72,8 @@ def solve(args, task, idx, to_print=True):
         
         new_ys = list(itertools.chain(*new_ys))
         print(f"DEBUG: Generated {len(new_ys)} total candidates.")
+        for i, y in enumerate(new_ys):
+          print(i, y)
 
         # Evaluation phase
         if args.method_evaluate == 'vote':
@@ -92,7 +94,8 @@ def solve(args, task, idx, to_print=True):
         if to_print:
             print(f"DEBUG: Top Candidate Value: {max(values) if values else 0}")
             print(f"DEBUG: Selected {len(select_new_ys)} candidates for next step.")
-            print(select_new_ys)
+            for i, y in enumerate(select_new_ys):
+              print(i, y)
         
         infos.append({'step': step, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': values, 'select_new_ys': select_new_ys})
         ys = select_new_ys

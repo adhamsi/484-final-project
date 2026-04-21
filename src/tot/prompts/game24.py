@@ -49,7 +49,8 @@ Input: {input}
 '''
 
 # 1-shot
-propose_prompt = '''Input: 2 8 8 14
+propose_prompt = '''
+Input: 2 8 8 14
 Possible next steps:
 2 + 8 = 10 (left: 8 10 14)
 8 / 2 = 4 (left: 4 8 14)
@@ -61,6 +62,7 @@ Possible next steps:
 14 - 2 = 12 (left: 8 8 12)
 Input: {input}
 Possible next steps:
+[ONLY OUTPUT POSSIBLE NEXT STEPS]
 '''
 
 value_prompt = '''Evaluate if given numbers can reach 24 (sure/likely/impossible)
