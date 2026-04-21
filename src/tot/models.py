@@ -22,6 +22,7 @@ def gpt(prompt, model="gpt-4o-mini", temperature=0.7, max_tokens=1000, n=1, stop
 def chatgpt(messages, model="gpt-4o-mini", temperature=0.7, max_tokens=1000, n=1, stop=None) -> list:
     global completion_tokens, prompt_tokens
     print(f"Sending request to {model}...")
+    # print(messages)
     
     # Modern response handling
     res = completions_with_backoff(
@@ -40,6 +41,13 @@ def chatgpt(messages, model="gpt-4o-mini", temperature=0.7, max_tokens=1000, n=1
     prompt_tokens += res.usage.prompt_tokens
     
     print(f"Received {len(outputs)} responses.")
+    # print(outputs)
+
+    # Track usage
+    usage = gpt_usage(backend="gpt-4o-mini")
+    print(f"Tokens Used: {usage['prompt_tokens']} prompt, {usage['completion_tokens']} completion")
+    print(f"Estimated Cost: ${usage['cost']:.4f}")
+
     return outputs
 
 def gpt_usage(backend="gpt-4o-mini"):

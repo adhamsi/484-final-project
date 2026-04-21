@@ -7,8 +7,11 @@ def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
     if cache_value and value_prompt in task.value_cache:
         return task.value_cache[value_prompt]
+    
+    print(f"DEBUG: Evaluating node value with {n_evaluate_sample} samples...")
     value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None)
     value = task.value_outputs_unwrap(x, y, value_outputs)
+    
     if cache_value:
         task.value_cache[value_prompt] = value
     return value
@@ -16,8 +19,8 @@ def get_value(task, x, y, n_evaluate_sample, cache_value=True):
 def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
     values = []
     local_value_cache = {}
-    for y in ys:  # each partial output
-        if y in local_value_cache:  # avoid duplicate candidates
+    for y in ys:
+        if y in local_value_cache:
             value = 0
         else:    
             value = get_value(task, x, y, n_evaluate_sample, cache_value=cache_value)
@@ -26,17 +29,20 @@ def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
     return values
 
 def get_votes(task, x, ys, n_evaluate_sample):
+    print(f"DEBUG: Getting votes for {len(ys)} candidates...")
     vote_prompt = task.vote_prompt_wrap(x, ys)
     vote_outputs = gpt(vote_prompt, n=n_evaluate_sample, stop=None)
     values = task.vote_outputs_unwrap(vote_outputs, len(ys))
     return values
 
 def get_proposals(task, x, y): 
+    print(f"DEBUG: Generating proposals for current state: {y.strip()}")
     propose_prompt = task.propose_prompt_wrap(x, y)
     proposals = gpt(propose_prompt, n=1, stop=None)[0].split('\n')
     return [y + _ + '\n' for _ in proposals]
 
 def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
+    print(f"DEBUG: Sampling {n_generate_sample} outputs (Type: {prompt_sample})...")
     if prompt_sample == 'standard':
         prompt = task.standard_prompt_wrap(x, y)
     elif prompt_sample == 'cot':
@@ -49,42 +55,50 @@ def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
 def solve(args, task, idx, to_print=True):
     global gpt
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
-    print(gpt)
-    x = task.get_input(idx)  # input
-    ys = ['']  # current output candidates
+    
+    x = task.get_input(idx)
+    print(f"\n--- STARTING SOLVE | Input: {x} | Method: {args.method_generate} ---")
+    
+    ys = ['']
     infos = []
     for step in range(task.steps):
-        # generation
+        print(f"\n== STEP {step+1}/{task.steps} ==")
+        
+        # Generation phase
         if args.method_generate == 'sample':
             new_ys = [get_samples(task, x, y, args.n_generate_sample, prompt_sample=args.prompt_sample, stop=task.stops[step]) for y in ys]
         elif args.method_generate == 'propose':
             new_ys = [get_proposals(task, x, y) for y in ys]
+        
         new_ys = list(itertools.chain(*new_ys))
-        ids = list(range(len(new_ys)))
-        # evaluation
+        print(f"DEBUG: Generated {len(new_ys)} total candidates.")
+
+        # Evaluation phase
         if args.method_evaluate == 'vote':
             values = get_votes(task, x, new_ys, args.n_evaluate_sample)
         elif args.method_evaluate == 'value':
             values = get_values(task, x, new_ys, args.n_evaluate_sample)
-
-        # selection
+        
+        # Selection phase
+        ids = list(range(len(new_ys)))
         if args.method_select == 'sample':
-            ps = np.array(values) / sum(values)
+            ps = np.array(values) / (sum(values) + 1e-9) # Avoid division by zero
             select_ids = np.random.choice(ids, size=args.n_select_sample, p=ps).tolist()
         elif args.method_select == 'greedy':
-            select_ids = sorted(ids, key=lambda x: values[x], reverse=True)[:args.n_select_sample]
+            select_ids = sorted(ids, key=lambda i: values[i], reverse=True)[:args.n_select_sample]
+        
         select_new_ys = [new_ys[select_id] for select_id in select_ids]
-
-        # log
-        if to_print: 
-            sorted_new_ys, sorted_values = zip(*sorted(zip(new_ys, values), key=lambda x: x[1], reverse=True))
-            print(f'-- new_ys --: {sorted_new_ys}\n-- sol values --: {sorted_values}\n-- choices --: {select_new_ys}\n')
+        
+        if to_print:
+            print(f"DEBUG: Top Candidate Value: {max(values) if values else 0}")
+            print(f"DEBUG: Selected {len(select_new_ys)} candidates for next step.")
+            print(select_new_ys)
         
         infos.append({'step': step, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': values, 'select_new_ys': select_new_ys})
         ys = select_new_ys
     
     if to_print: 
-        print(ys)
+        print(f"\n--- FINAL OUTPUTS ---\n{ys}")
     return ys, {'steps': infos}
 
 def naive_solve(args, task, idx, to_print=True):
