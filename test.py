@@ -1,4 +1,8 @@
 import argparse
+# Change the import here to get the correct model 
+# (async or without)
+# from tot.methods.bfs_async import solve
+
 from tot.methods.bfs import solve
 from tot.tasks.game24 import Game24Task
 
