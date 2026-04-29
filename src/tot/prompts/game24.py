@@ -50,6 +50,9 @@ Input: {input}
 
 # 1-shot
 propose_prompt = '''
+Each step, you are only allowed to choose two of the remaining numbers to obtain a new number.
+You can only use the same number twice if two copies of that number exist.
+ONLY OUTPUT POSSIBLE NEXT STEPS
 Input: 2 8 8 14
 Possible next steps:
 2 + 8 = 10 (left: 8 10 14)
@@ -58,14 +61,14 @@ Possible next steps:
 2 * 8 = 16 (left: 8 14 16)
 8 - 2 = 6 (left: 6 8 14)
 14 - 8 = 6 (left: 2 6 8)
-14 /  2 = 7 (left: 7 8 8)
+14 / 2 = 7 (left: 7 8 8)
 14 - 2 = 12 (left: 8 8 12)
 Input: {input}
 Possible next steps:
-[ONLY OUTPUT POSSIBLE NEXT STEPS]
 '''
 
-value_prompt = '''Evaluate if given numbers can reach 24 (sure/likely/impossible)
+value_prompt = '''Evaluate if given numbers can reach 24 (sure/likely/impossible).
+On the final line, give your final answer. Examples:
 10 14
 10 + 14 = 24
 sure
@@ -107,6 +110,7 @@ impossible
 '''
 
 value_last_step_prompt = '''Use numbers and basic arithmetic operations (+ - * /) to obtain 24. Given an input and an answer, give a judgement (sure/impossible) if the answer is correct, i.e. it uses each input exactly once and no other numbers, and reach 24.
+On the final line, give your final answer. Examples:
 Input: 4 4 6 8
 Answer: (4 + 8) * (6 - 4) = 24
 Judge: 
