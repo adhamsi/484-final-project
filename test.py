@@ -1,9 +1,10 @@
 import argparse
 # Change the import here to get the correct model 
 # (async or without)
-from tot.methods.bfs_async import solve
-
+import asyncio
+from tot.methods.bfs_async import solve_async
 # from tot.methods.bfs import solve
+
 from tot.tasks.game24 import Game24Task
 
 args = argparse.Namespace(backend='gpt-4o-mini', 
@@ -19,5 +20,13 @@ args = argparse.Namespace(backend='gpt-4o-mini',
                           n_select_sample=5)
 
 task = Game24Task()
-ys, infos = solve(args, task, 900)
-print(ys[0])
+
+async def main():
+  task = Game24Task()
+  for i in range(10):
+    print(f"Game of 24 task #{i}")
+    ys, _ = await solve_async(args, task, 900+i)
+    print(ys[0])
+
+if __name__ == "__main__":
+  asyncio.run(main())

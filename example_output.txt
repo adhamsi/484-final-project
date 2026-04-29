@@ -1,0 +1,159 @@
+Game of 24 task #0
+
+--- STARTING SOLVE | 4 5 6 10 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+10 - 6 = 4 (left: 4 5 4)  
+4 * 5 = 20 (left: 4 20)
+4 + 20 = 24 (left: 24)
+
+
+Game of 24 task #1
+
+--- STARTING SOLVE | 1 2 4 7 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+4 - 1 = 3 (left: 2 3 7)  
+2 + 3 = 5 (left: 5 7)  
+5 + 7 = 12 (left: 12)
+Since there is only one number left (12), there are no possible next steps.
+
+Game of 24 task #2
+
+--- STARTING SOLVE | 2 5 8 11 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+5 + 8 = 13 (left: 2 11 13)  
+11 - 2 = 9 (left: 2 9 13)  
+2 + 9 = 11 (left: 11 13)  
+11 + 13 = 24 (left: 24)
+
+Game of 24 task #3
+
+--- STARTING SOLVE | 3 4 4 13 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+3 + 4 = 7 (left: 4 7 13)  
+4 + 7 = 11 (left: 11 13)  
+11 + 13 = 24 (left: 24)
+
+
+Game of 24 task #4
+
+--- STARTING SOLVE | 6 7 8 9 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+9 - 6 = 3 (left: 3 7 8)  
+8 - 7 = 1 (left: 3 1 8)  
+8 / 3 = 2.67 (not an integer, not allowed)  
+14 - 8 = 6 (left: 2 6 8)  
+
+Game of 24 task #5
+
+--- STARTING SOLVE | 1 11 11 13 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+1 + 11 = 12 (left: 11 12 13)  
+13 - 11 = 2 (left: 2 12)  
+2 * 12 = 24 (left: 24)  
+
+
+Game of 24 task #6
+
+--- STARTING SOLVE | 1 8 10 11 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+10 - 8 = 2 (left: 1 2 11)  
+11 - 1 = 10 (left: 2 10)  
+2 + 10 = 12 (left: 12)
+12 - 8 = 4 (left: 2 4 8)  
+
+Game of 24 task #7
+
+--- STARTING SOLVE | 2 3 6 9 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+9 - 2 = 7 (left: 3 6 7)  
+7 / 7 = 1 (left: 3 6 1)  
+3 + 1 = 4 (left: 6 4)  
+6 * 4 = 24 (left: 24)  
+
+Game of 24 task #8
+
+--- STARTING SOLVE | 1 3 5 9 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+3 / 1 = 3 (left: 5 9 3)  
+3 * 5 = 15 (left: 9 15)  
+9 + 15 = 24 (left: 24)
+
+
+Game of 24 task #9
+
+--- STARTING SOLVE | 3 3 7 12 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+12 / 7 ≈ 1.71 (not an integer, not a valid step)  
+14 - 8 = 6 (left: 2 6 8)
+6 / 2 = 3 (left: 3 8)  
+3 + 8 = 11 (left: 11)

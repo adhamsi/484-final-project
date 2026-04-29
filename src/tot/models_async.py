@@ -3,6 +3,8 @@ import asyncio
 import backoff
 from openai import AsyncOpenAI
 
+# Global debugging toggle
+debugging_on = False
 
 completion_tokens = 0
 prompt_tokens = 0
@@ -25,7 +27,8 @@ async def chatgpt_async(messages, model="gpt-4o-mini", temperature=0.7, max_toke
     global completion_tokens, prompt_tokens
 
     async with semaphore:
-        print(f"Sending request to {model}...")
+        if debugging_on:
+            print(f"Sending request to {model}...")
 
         res = await completions_with_backoff(
             model=model,
@@ -42,11 +45,11 @@ async def chatgpt_async(messages, model="gpt-4o-mini", temperature=0.7, max_toke
     completion_tokens += res.usage.completion_tokens
     prompt_tokens += res.usage.prompt_tokens
 
-    print(f"Received {len(outputs)} responses.")
-
-    usage = gpt_usage()
-    print(f"Tokens Used: {usage['prompt_tokens']} prompt, {usage['completion_tokens']} completion")
-    print(f"Estimated Cost: ${usage['cost']:.4f}")
+    if debugging_on:
+        print(f"Received {len(outputs)} responses.")
+        usage = gpt_usage()
+        print(f"Tokens Used: {usage['prompt_tokens']} prompt, {usage['completion_tokens']} completion")
+        print(f"Estimated Cost: ${usage['cost']:.4f}")
 
     return outputs
 
