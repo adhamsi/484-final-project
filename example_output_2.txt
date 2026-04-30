@@ -1,0 +1,178 @@
+Game of 24 task #900
+
+--- STARTING SOLVE | 4 5 6 10 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 38481 prompt, 23946 completion
+Estimated Cost: $0.0201
+5 + 10 = 15 (left: 4 6 15)  
+15 / 3 = 5 (left: 4 6 5)
+5 / 5 = 1 (left: 4 6 1)  
+4 * 1 = 4 (left: 4 6)  
+
+Game of 24 task #901
+
+--- STARTING SOLVE | 1 2 4 7 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 65257 prompt, 39059 completion
+Estimated Cost: $0.0332
+1 + 4 = 5 (left: 2 5 7)  
+5 + 7 = 12 (left: 2 12)  
+2 * 12 = 24 (left: 24)
+
+
+Game of 24 task #902
+
+--- STARTING SOLVE | 2 5 8 11 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 86853 prompt, 59514 completion
+Estimated Cost: $0.0487
+11 / 11 = 1 (left: 2 5 8 1)  
+5 - 1 = 4 (left: 2 8 4)  
+8 - 2 = 6 (left: 4 6)  
+4 * 6 = 24 (left: 24)  
+
+Game of 24 task #903
+
+--- STARTING SOLVE | 3 4 4 13 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 118369 prompt, 78608 completion
+Estimated Cost: $0.0649
+3 + 4 = 7 (left: 4 7 13)  
+4 + 7 = 11 (left: 11 13)  
+11 + 13 = 24 (left: 24)
+6 + 15 = 21 (left: 21)  
+
+Game of 24 task #904
+
+--- STARTING SOLVE | 6 7 8 9 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 163970 prompt, 123166 completion
+Estimated Cost: $0.0985
+6 / 6 = 1 (left: 7 8 9)  
+7 + 8 = 15 (left: 9 15)  
+9 + 15 = 24 (left: 24)
+
+
+Game of 24 task #905
+
+--- STARTING SOLVE | 1 11 11 13 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 204808 prompt, 165851 completion
+Estimated Cost: $0.1302
+11 + 1 = 12 (left: 11 12 13)  
+13 - 11 = 2 (left: 2 12)  
+2 * 12 = 24 (left: 24)  
+
+
+Game of 24 task #906
+
+--- STARTING SOLVE | 1 8 10 11 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 224197 prompt, 180661 completion
+Estimated Cost: $0.1420
+10 - 1 = 9 (left: 8 9 11)  
+8 + 9 = 17 (left: 11 17)  
+11 + 17 = 28 (left: 28)  
+28
+
+Game of 24 task #907
+
+--- STARTING SOLVE | 2 3 6 9 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 242357 prompt, 196512 completion
+Estimated Cost: $0.1543
+2 + 3 = 5 (left: 5 6 9)  
+9 - 5 = 4 (left: 4 6 9)  
+4 * 6 = 24 (left: 9 24)  
+9 + 24 = 33 (left: 33)
+
+Game of 24 task #908
+
+--- STARTING SOLVE | 1 3 5 9 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 276077 prompt, 221051 completion
+Estimated Cost: $0.1740
+1 * 5 = 5 (left: 3 5 9)  
+3 * 5 = 15 (left: 9 15)  
+9 + 15 = 24 (left: 24)
+
+
+Game of 24 task #909
+
+--- STARTING SOLVE | 3 3 7 12 ---
+
+== STEP 1/4 ==
+
+== STEP 2/4 ==
+
+== STEP 3/4 ==
+
+== STEP 4/4 ==
+Tokens Used: 302116 prompt, 245416 completion
+Estimated Cost: $0.1926
+3 * 3 = 9 (left: 7 9 12)  
+9 - 7 = 2 (left: 2 12)  
+2 * 12 = 24 (left: 24) 

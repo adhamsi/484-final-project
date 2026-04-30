@@ -32,8 +32,8 @@ class Game24Task(Task):
         path = os.path.join(DATA_PATH, '24', file)
         self.data = list(pd.read_csv(path)['Puzzles'])
         self.value_cache = {}
-        self.steps = 4
-        self.stops = ['\n'] * 4
+        self.steps = 3
+        self.stops = ['\n'] * 3
 
     def __len__(self) -> int:
         return len(self.data)
@@ -74,18 +74,19 @@ class Game24Task(Task):
     
     @staticmethod
     def value_prompt_wrap(x: str, y: str) -> str:
-        last_line = y.strip().split('\n')[-1]
-        if 'left: ' not in last_line:  # last step
-            ans = last_line.lower().replace('answer: ', '')
-            # print([value_last_step_prompt.format(input=x, answer=ans)])
-            return value_last_step_prompt.format(input=x, answer=ans)
-        current_numbers = get_current_numbers(y)
-        return value_prompt.format(input=current_numbers)
+        # last_line = y.strip().split('\n')[-1]
+        # if 'left: ' not in last_line:  # last step
+        #     ans = last_line.lower().replace('answer: ', '')
+        #     # print([value_last_step_prompt.format(input=x, answer=ans)])
+        #     return value_last_step_prompt.format(input=x, answer=ans)
+        # current_numbers = get_current_numbers(y)
+        # return value_prompt.format(input=current_numbers)
+        return value_prompt.format(input=x, solution=y)
     
     @staticmethod
     def value_outputs_unwrap(x: str, y: str, value_outputs: list) -> float:
-        if len(y.strip().split('\n')) == 4 and 'answer' not in y.lower():
-            return 0
+        # if len(y.strip().split('\n')) == 4 and 'answer' not in y.lower():
+        #     return 0
         final_answers = [_.split('\n')[-1] for _ in value_outputs]
         value_map = {'impossible': 0.001, 'likely': 1, 'sure': 20}
         total_value = 0

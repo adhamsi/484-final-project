@@ -121,6 +121,7 @@ async def solve_async(args, task, idx):
     if debugging_on:
         print("\nFINAL:", ys)
 
+    if True:
         usage = gpt_usage()
         print(f"Tokens Used: {usage['prompt_tokens']} prompt, {usage['completion_tokens']} completion")
         print(f"Estimated Cost: ${usage['cost']:.4f}")

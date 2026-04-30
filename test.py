@@ -24,7 +24,7 @@ task = Game24Task()
 async def main():
   task = Game24Task()
   for i in range(10):
-    print(f"Game of 24 task #{i}")
+    print(f"Task {900+i}")
     ys, _ = await solve_async(args, task, 900+i)
     print(ys[0])
 
