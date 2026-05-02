@@ -23,10 +23,13 @@ class SudokuEnv:
 
     def reset(self, idx, board = None, status = None, steps = None):
         self.idx = idx
-        self.data, self.board_get = self.file[idx]
+        self.data, self.board_gt = self.file[idx]
 
         self.board = [row[:] for row in self.data]
-        self.board_gt = [row[:] for row in self.board]
+        self.board_gt = [row[:] for row in self.board_gt]   # changed this
+
+        self.ans = self.get_ans(self.board)                 # THIS should be self.ans
+        self.ans_gt = self.get_ans(self.board_gt)
 
         self.steps = 0
 
@@ -36,44 +39,50 @@ class SudokuEnv:
             self.board = [row[:] for row in board]
         
         if status is not None:
-            self.staus = status
+            self.status = status
         
         if steps is not None:
             self.steps = steps
 
         return self.render()
     
-    # this one is tricky
-    # how to change for sudoku
+    # changed...?
     def prompt_status(self):
         count = {'sure': 0, 'maybe': 0, 'impossible': 0}
-        for ans, data, status in zip(self.ans, self.data, self.status):
-            # if status != 0: continue
-            if ans.count('_') >= 4: continue
-            ans = ' '.join(ans.lower())
-            line = f'{data}: {ans}'
-            prompt = value_prompt.format(input=line) #where is value_prompt
-            if prompt in self.prompt_status_cache:
-                res = self.prompt_status_cache[prompt]
-            else:
-                res = gpt(prompt)[0]
-                self.prompt_status_cache[prompt] = res
 
-            res = res.split('\n')[-1].strip()
-            if res in count: count[res] += 1
+        board_str = "\n".join(str(row) for row in self.board)
+
+        for i in range(9):
+            for j in range(9):
+                if self.board[i][j] != 0:
+                    continue
+
+                line = f"Board:\n{board_str}\nSelected cell: r{i+1}c{j+1}"
+                prompt = value_prompt.format(input=line)
+
+                if prompt in self.prompt_status_cache:
+                    res = self.prompt_status_cache[prompt]
+                else:
+                    res = gpt(prompt)[0]
+                    self.prompt_status_cache[prompt] = res
+
+                res = res.split('\n')[-1].strip().lower()
+
+                if res in count:
+                    count[res] += 1
 
         return count
     
     def render_gt_board(self):
         s = "GT Board:\n"
         for i in range(9):
-            s += ' '.join(self.board_gt[i*9:(i+1)*9]) + '\n'
+            s += str(self.board_gt[i]) + '\n'
         return s
 
     def render_board(self):
         s = "Current Board:\n"
         for i in range(9):
-            s += ''.join(self.board[i*9:(i+1)*9]) + '\n'
+            s += str(self.board[i]) + '\n'
         return s
     
     # predicted answer
@@ -84,7 +93,7 @@ class SudokuEnv:
             row = []
             for j in range(9):
                 if status is None or self.status[i][j] == status:
-                    row.append(str(self.ans[i][j]))
+                    row.append(str(self.board[i][j]))
                 else:
                     row.append(str(self.data[i][j]))
 
@@ -92,6 +101,7 @@ class SudokuEnv:
 
         return s
     
+
     # actual answer
     def render_gt_ans(self, status=None):
         s = ""
@@ -100,9 +110,9 @@ class SudokuEnv:
             row = []
             for j in range(9):
                 if status is None or self.status[i][j] == status:
-                    row.append(str(self.ans_gt[i][j]))
+                    row.append(str(self.board_gt[i][j]))
                 else:
-                    row.append(str(self.data[i][j]))
+                    row.append(str(self.board_gt[i][j]))
 
             s += " ".join(row) + "\n"
 
@@ -323,21 +333,9 @@ class SudokuTask:
 
         return proposals
 
-    # change this one also
+    # changed also...
     def evaluate(self, x: str, y: str, n_evaluate_sample: int) -> int:
         self.set_status(x, y)
-        assert n_evaluate_sample == 1 # TODO: ad hoc
-        count = {'sure': 0, 'maybe': 0, 'impossible': 0}
-        for ans, data, status in zip(self.env.ans, self.env.data, self.env.status):
-            if ans.count('_') >= 4: continue
-            ans = ' '.join(ans.lower())
-            line = f'{data}: {ans}'
-            prompt = value_prompt.format(input=line)
-            res = gpt(prompt)[0]
-            print(line)
-            print(res)
-            print()
-            res = res.split('\n')[-1].strip()
-            if res in count: count[res] += 1
-        print(count)
-        return count
+        assert n_evaluate_sample == 1
+
+        return self.env.prompt_status()
