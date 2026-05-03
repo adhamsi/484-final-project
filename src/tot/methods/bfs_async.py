@@ -116,7 +116,7 @@ async def solve_async(args, task, idx):
         if debugging_on:
             print(f"Top value: {max(values) if values else 0}")
 
-        infos.append({"step": step, "ys": ys, "values": values})
+        infos.append({"step": step, "x": x, "ys": ys, "new_ys": new_ys, "values": values})
 
     if debugging_on:
         print("\nFINAL:", ys)

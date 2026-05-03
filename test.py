@@ -21,7 +21,7 @@ args = argparse.Namespace(backend='gpt-4o-mini',
                           method_select='greedy', 
                           n_generate_sample=1, # number of times to prompt for thought generation
                           n_evaluate_sample=3, # number of times to prompt for state evaluation
-                          n_select_sample=10) # number of states to keep from each step (i.e. ``b`` in the paper's ToT + BFS algorithm)
+                          n_select_sample=3) # number of states to keep from each step (i.e. ``b`` in the paper's ToT + BFS algorithm)
 
 task = Game24Task()
 

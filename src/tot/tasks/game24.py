@@ -32,8 +32,8 @@ class Game24Task(Task):
         path = os.path.join(DATA_PATH, '24', file)
         self.data = list(pd.read_csv(path)['Puzzles'])
         self.value_cache = {}
-        self.steps = 3
-        self.stops = ['\n'] * 3
+        self.steps = 4
+        self.stops = ['\n'] * 4
 
     def __len__(self) -> int:
         return len(self.data)
@@ -65,22 +65,19 @@ class Game24Task(Task):
     @staticmethod
     def propose_prompt_wrap(x: str, y: str='') -> str:
         current_numbers = get_current_numbers(y if y else x)
-        if current_numbers == '24':
-            prompt = cot_prompt.format(input=x) + 'Steps:' + y
-            # print([prompt])
-        else:
-            prompt = propose_prompt.format(input=current_numbers)
-        return prompt
+        
+        if y.count("left") == 3:
+            return propose_last_step_prompt.format(x=x, solution=y)
+        return propose_prompt.format(input=current_numbers)
     
     @staticmethod
     def value_prompt_wrap(x: str, y: str) -> str:
-        # last_line = y.strip().split('\n')[-1]
-        # if 'left: ' not in last_line:  # last step
-        #     ans = last_line.lower().replace('answer: ', '')
-        #     # print([value_last_step_prompt.format(input=x, answer=ans)])
-        #     return value_last_step_prompt.format(input=x, answer=ans)
+        last_line = y.strip().split('\n')[-1]
+        if 'left: ' not in last_line:  # last step
+            ans = last_line.lower().replace('answer: ', '')
+            # print([value_last_step_prompt.format(input=x, answer=ans)])
+            return value_last_step_prompt.format(input=x, answer=ans)
         # current_numbers = get_current_numbers(y)
-        # return value_prompt.format(input=current_numbers)
         return value_prompt.format(input=x, solution=y)
     
     @staticmethod
@@ -94,5 +91,5 @@ class Game24Task(Task):
           for name, value in value_map.items():
               if name in final_answer:
                   total_value += value
-                  break 
-        return value
+                  break
+        return total_value

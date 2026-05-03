@@ -53,18 +53,45 @@ propose_prompt = '''
 Each step, you are only allowed to choose two of the remaining numbers to obtain a new number.
 You can only use the same number twice if two copies of that number exist.
 ONLY OUTPUT POSSIBLE NEXT STEPS
-Input: 2 8 8 14
+Input: 3 4 6 12
 Possible next steps:
-2 + 8 = 10 (left: 8 10 14)
-8 / 2 = 4 (left: 4 8 14)
-14 + 2 = 16 (left: 8 8 16)
-2 * 8 = 16 (left: 8 14 16)
-8 - 2 = 6 (left: 6 8 14)
-14 - 8 = 6 (left: 2 6 8)
-14 / 2 = 7 (left: 7 8 8)
-14 - 2 = 12 (left: 8 8 12)
+3 + 4 = 7 (left: 6 7 12)
+6 / 3 = 2 (left: 2 4 12)
+12 + 6 = 18 (left: 3 4 18)
+4 * 3 = 12 (left: 6 12 12)
+6 - 4 = 2 (left: 2 3 12)
+12 / 4 = 3 (left: 3 3 6)
+12 - 3 = 9 (left: 4 6 9)
+6 * 4 = 24 (left: 3 12 24)
 Input: {input}
 Possible next steps:
+'''
+
+propose_last_step_prompt = '''
+Given a set of steps, output the final expression.
+OUTPUT ONLY THE FINAL EXPRESSION WITH THE FORMAT "Answer: <answer>"
+Examples:
+Input: 4 9 10 13
+Steps:
+13 - 10 = 3 (left: 3 4 9)
+9 - 3 = 6 (left: 4 6)
+4 * 6 = 24 (left: 24)
+Answer: 4 * (9 - (13 - 10)) = 24
+Input: 1 4 8 8
+Steps:
+8 / 4 = 2 (left: 1 2 8)
+1 + 2 = 3 (left: 3 8)
+3 * 8 = 24 (left: 24)
+Answer: (1 + 8 / 4) * 8 = 24
+Input: 5 5 5 9
+Steps:
+5 + 5 = 10 (left: 5 9 10)
+10 + 5 = 15 (left: 9 15)
+15 + 9 = 24 (left: 24)
+Answer: ((5 + 5) + 5) + 9 = 24
+Input: {x}
+Steps:
+{solution}
 '''
 
 value_prompt = '''Evaluate if given numbers can reach 24 (sure/likely/impossible).
@@ -83,12 +110,6 @@ likely
 (8 - 5) * 7 = 3 * 7 = 21
 I cannot obtain 24 now, but numbers are within a reasonable range
 likely
-2 3 5 6
-2 * 3 = 6 (left: 5 6 6)
-5 + 6 + 6 = 17
-(6 - 5) * 6 = 1 * 6 = 6
-I cannot obtain 24 now, but numbers are within a reasonable range
-likely
 2 5 7 10
 2 * 5 = 10 (left: 10 2 7)
 2 * 7 = 14 (left: 10 14)
@@ -101,6 +122,12 @@ sure
 3 * 8 = 24
 I can obtain 24 in one step
 sure
+4 5 6 10
+10 - 5 = 5 (left: 4 5 6)
+4 * 6 = 24 (left: 5 24)
+5 + 24 = 29 (left: 29)
+Reached final step and did not achieve 24
+impossible
 1 3 5 11
 5 - 1 = 4 (left: 3 4 11)
 3 * 4 = 12 (left: 11 12)
