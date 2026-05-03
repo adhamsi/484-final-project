@@ -239,7 +239,7 @@ class SudokuTask:
 
         for idx in range(len(self.env)):
             self.env.reset(idx)
-            self.xs.append(self.env.render_board())
+            self.xs.append(self.env.render_board().strip())
 
         # 9 x 9 board instead of 5 x 5
         self.steps = 81
@@ -251,7 +251,7 @@ class SudokuTask:
     def get_input(self, idx: int) -> str:
         self.env.reset(idx)
 
-        return self.env.render_board()
+        return self.env.render_board().strip()
 
     def test_output(self, idx: int, output: str):
         self.env.reset(idx)
@@ -270,7 +270,7 @@ class SudokuTask:
         return info
     
     def set_status(self, x: str, y: str):
-        idx = self.xs.index(x.strip())
+        idx = self.xs.index(x)
 
         self.test_output(idx, y)
 
@@ -286,8 +286,10 @@ class SudokuTask:
         return cot_prompt.format(input = x) + y
         # again same thing here
 
-    def propose_prompt_wrap():
-        pass
+    def propose_prompt_wrap(self, x: str, y: str = '') -> str:
+        self.set_status(x, y)
+
+        return propose_prompt.format(input=self.env.render_board())
 
     def propose_outputs_unwrap(self, x: str, y: str, outputs: list, n_max_propose: int) -> list:
         confidence_to_value = {
