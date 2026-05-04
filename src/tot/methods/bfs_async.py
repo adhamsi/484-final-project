@@ -45,12 +45,12 @@ async def get_votes(task, x, ys, n_evaluate_sample):
     return task.vote_outputs_unwrap(vote_outputs, len(ys))
 
 
-async def get_proposals(task, x, y):
+async def get_proposals(task, x, y, temp=0.7):
     if debugging_on:
         print(f"DEBUG: Generating proposals for: {y.strip()}")
         
     propose_prompt = task.propose_prompt_wrap(x, y)
-    proposals = (await gpt_async(propose_prompt, n=1))[0].split('\n')
+    proposals = (await gpt_async(propose_prompt, n=1, temperature=temp))[0].split('\n')
     return [y + p + '\n' for p in proposals]
 
 
@@ -71,6 +71,7 @@ async def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
 
 async def solve_async(args, task, idx):
     x = task.get_input(idx)
+    temp = args.temperature
 
     if True:
         print(f"\n--- STARTING SOLVE | {x} ---")
@@ -89,7 +90,7 @@ async def solve_async(args, task, idx):
             ])
         else:
             new_ys_nested = await asyncio.gather(*[
-                get_proposals(task, x, y)
+                get_proposals(task, x, y, temp)
                 for y in ys
             ])
 
