@@ -1,14 +1,14 @@
 import re
 import os
 import json
-from tot.tasks.base import Task, DATA_PATH
-from tot.prompts.sudokus import * 
-from tot.models import gpt
+from src.tot.tasks.base import Task, DATA_PATH
+from src.tot.prompts.sudokus import * 
+from src.tot.models import gpt
 
 # work on this later
 class SudokuEnv:
     def __init__(self, file='sudoku_9.json'):
-        self.file = os.path.join(DATA_PATH, 'crosswords', file)
+        self.file = os.path.join(DATA_PATH, 'sudoku', file)
 
         self.file = json.load(open(self.file))
         self.n = len(self.file)
@@ -209,7 +209,28 @@ class SudokuEnv:
             'r_filled': r_filled,
             'r_game': r_all
         }
+    
+    # added this in
+    def evaluate_board(self, board):
+        correct = 0
+        total_filled = 0
 
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] != 0:
+                    total_filled += 1
+                    if board[i][j] == self.board_gt[i][j]:
+                        correct += 1
+
+        r_cell = correct / 81
+        r_filled = correct / total_filled if total_filled > 0 else 0
+        r_all = board == self.board_gt
+
+        return {
+            "r_cell": r_cell,
+            "r_filled": r_filled,
+            "r_game": r_all
+    }
 
 class SudokuTask:
     '''
@@ -255,19 +276,47 @@ class SudokuTask:
 
     def test_output(self, idx: int, output: str):
         self.env.reset(idx)
-        output = output.split('Output:\n')[-1].strip()
 
+        output = output.split('Output:\n')[-1].strip()
         lines = output.split('\n')[-9:]
+
         board = []
 
         for line in lines:
-            nums = [int(x) for x in line.strip().split()[:-9]]
-            board.append(nums)
+            nums = [int(x) for x in line.strip().split() if x.isdigit()]
+
+            if len(nums) == 9:
+                board.append(nums)
+
+        if len(board) != 9:
+            return {
+                "r_cell": 0,
+                "r_filled": 0,
+                "r_game": False,
+                "r": 0
+            }
 
         info = self.env.evaluate_board(board)
         info['r'] = info['r_cell']
 
         return info
+    
+
+    #def test_output(self, idx: int, output: str):
+    #    self.env.reset(idx)
+    #    output = output.split('Output:\n')[-1].strip()
+
+    #    lines = output.split('\n')[-9:]
+    #    board = []
+
+    #    for line in lines:
+    #        nums = [int(x) for x in line.strip().split()] # changed this
+    #        board.append(nums)
+
+    #    info = self.env.evaluate_board(board)
+    #    info['r'] = info['r_cell']
+
+    #    return info
     
     def set_status(self, x: str, y: str):
         idx = self.xs.index(x)
