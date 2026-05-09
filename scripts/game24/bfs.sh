@@ -7,4 +7,5 @@ python run.py \
     --method_select greedy \
     --n_evaluate_sample 3 \
     --n_select_sample 5 \
+    --backend gpt-5.4-mini
     ${@}

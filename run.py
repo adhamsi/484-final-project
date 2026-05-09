@@ -11,7 +11,7 @@ from tot.models import gpt_usage
 from tot.methods.bfs_async import solve_async
 
 
-async def run(args):
+def run(args):
     task = get_task(args.task)
     logs, cnt_avg, cnt_any = [], 0, 0
     if args.naive_run:
@@ -26,7 +26,7 @@ async def run(args):
         if args.naive_run:
             ys, info = naive_solve(args, task, i) 
         else:
-            ys, info = await solve_async(args, task, i)
+            ys, info = solve_async(args, task, i)
             
         # log
         infos = [task.test_output(i, y) for y in ys]
@@ -48,7 +48,7 @@ async def run(args):
 
 def parse_args():
     args = argparse.ArgumentParser()
-    args.add_argument('--backend', type=str, choices=['gpt-4o-mini'], default='gpt-4o-mini')
+    args.add_argument('--backend', type=str, choices=['gpt-4o-mini', 'gpt-5.4-mini'], default='gpt-4o-mini')
     args.add_argument('--temperature', type=float, default=0.7)
 
     args.add_argument('--task', type=str, required=True, choices=['game24', 'text', 'crosswords'])

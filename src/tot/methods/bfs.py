@@ -1,7 +1,7 @@
 import itertools
 import numpy as np
 from functools import partial
-from tot.models import gpt
+from tot.models import gpt, gpt_usage
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
@@ -102,6 +102,9 @@ def solve(args, task, idx, to_print=True):
     
     if to_print: 
         print(f"\n--- FINAL OUTPUTS ---\n{ys}")
+        usage = gpt_usage()
+        print(f"Tokens Used: {usage['prompt_tokens']} prompt, {usage['completion_tokens']} completion")
+        print(f"Estimated Cost: ${usage['cost']:.4f}")
     return ys, {'steps': infos}
 
 def naive_solve(args, task, idx, to_print=True):
