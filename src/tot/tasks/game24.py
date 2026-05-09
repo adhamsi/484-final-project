@@ -42,7 +42,7 @@ class Game24Task(Task):
         return self.data[idx]
 
     def test_output(self, idx: int, output: str):
-        expression = output.strip().split('\n')[-1].lower().replace('answer: ', '').split('=')[0]
+        expression = output.lower().replace('answer: ', '').replace('`', '').replace('\\(', '').replace('\\)', '').strip().split('\n')[-1].split('=')[0]
         numbers = re.findall(r'\d+', expression)
         problem_numbers = re.findall(r'\d+', self.data[idx])
         if sorted(numbers) != sorted(problem_numbers):
