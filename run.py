@@ -26,7 +26,7 @@ def run(args):
         if args.naive_run:
             ys, info = naive_solve(args, task, i) 
         else:
-            ys, info = solve_async(args, task, i)
+            ys, info = solve(args, task, i)
             
         # log
         infos = [task.test_output(i, y) for y in ys]
