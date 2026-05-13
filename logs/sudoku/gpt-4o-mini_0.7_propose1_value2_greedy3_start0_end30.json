@@ -1,0 +1,512 @@
+[
+  {
+    "idx": 0,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n6 8 9 7 2 5 4 3 1\n1 3 7 9 8 4 2 6 5\n4 2 5 1 3 6 8 7 9\n2 5 8 4 7 1 6 9 3\n3 7 6 5 9 2 1 8 4\n9 4 1 8 6 3 5 2 7\n7 1 3 2 5 8 9 4 6\n5 9 2 6 4 7 3 1 8\n8 6 4 3 1 9 7 5 2"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 40,
+        "correct_blanks_nearest": 40,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 1,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n2 3 5 8 1 9 4 6 7\n7 4 6 5 2 3 9 1 8\n1 9 8 4 7 6 5 3 2\n8 6 7 3 9 5 2 4 1\n3 2 4 6 8 1 7 9 5\n9 5 1 7 4 2 6 8 3\n4 8 9 1 5 7 3 2 6\n5 1 3 2 6 4 8 7 9\n6 7 2 9 3 8 1 5 4"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 38,
+        "correct_blanks_nearest": 38,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 2,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n3 8 4 1 6 5 7 2 9\n7 5 2 4 9 8 6 1 3\n9 6 1 3 2 7 5 8 4\n5 7 8 9 1 3 4 6 3\n2 1 6 7 5 4 9 3 8\n5 9 3 6 8 2 1 5 7\n6 3 5 2 7 9 8 4 1\n2 4 7 8 3 6 2 9 5\n8 2 9 5 4 1 3 7 6"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.92,
+        "r_game": false,
+        "r": 0.92,
+        "target_accuracy_percent": 92,
+        "blank_count": 35,
+        "correct_blanks_nearest": 32,
+        "realized_cell_accuracy_from_board": 0.9143
+      }
+    ]
+  },
+  {
+    "idx": 3,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n6 8 3 2 4 5 9 1 7\n7 5 4 9 1 6 3 8 3\n9 1 2 7 8 3 5 4 6\n3 6 2 4 5 2 7 9 8\n8 9 5 1 6 7 3 2 5\n2 4 7 3 9 8 6 5 1\n1 2 8 6 3 9 4 7 5\n4 7 7 5 2 1 8 3 9\n5 3 9 9 7 4 1 7 2"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.86,
+        "r_game": false,
+        "r": 0.86,
+        "target_accuracy_percent": 86,
+        "blank_count": 44,
+        "correct_blanks_nearest": 38,
+        "realized_cell_accuracy_from_board": 0.8636
+      }
+    ]
+  },
+  {
+    "idx": 4,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n9 6 7 5 3 1 2 4 8\n8 2 5 9 4 6 1 3 7\n3 1 4 8 7 2 6 5 9\n1 5 6 2 9 4 7 8 3\n7 8 9 1 5 3 4 6 2\n4 3 2 7 6 8 9 1 5\n6 9 3 4 2 5 8 7 1\n2 4 8 3 1 7 5 9 6\n5 7 1 6 8 9 3 2 4"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 32,
+        "correct_blanks_nearest": 32,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 5,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n4 5 6 9 2 3 1 7 8\n9 3 8 6 1 7 2 5 4\n2 7 1 4 5 8 9 6 3\n5 8 2 7 4 9 3 1 6\n1 6 7 3 8 2 4 9 5\n3 9 4 1 6 5 7 8 2\n8 1 9 5 3 4 6 2 7\n7 2 3 8 9 6 5 4 1\n6 4 5 2 7 1 8 3 9"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 30,
+        "correct_blanks_nearest": 30,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 6,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n6 5 3 8 4 7 3 9 2\n1 9 2 5 3 6 7 8 4\n8 4 7 9 2 2 6 3 7\n9 2 4 6 8 3 2 5 7\n7 8 1 2 5 9 6 4 3\n3 6 5 7 1 4 8 2 9\n5 1 9 3 6 8 4 7 2\n4 7 8 1 9 2 3 7 5\n2 3 6 4 7 5 9 1 8"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.82,
+        "r_game": false,
+        "r": 0.82,
+        "target_accuracy_percent": 82,
+        "blank_count": 40,
+        "correct_blanks_nearest": 33,
+        "realized_cell_accuracy_from_board": 0.825
+      }
+    ]
+  },
+  {
+    "idx": 7,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n2 3 5 2 5 7 9 4 1\n2 1 6 5 2 3 8 7 5\n5 1 8 4 9 7 2 3 3\n8 7 7 3 9 1 2 2 9\n9 6 2 5 7 3 7 1 8\n9 8 2 4 4 9 6 8 3\n6 2 8 9 6 7 7 2 6\n5 1 3 7 4 5 8 7 9\n6 5 2 8 3 2 1 9 6"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.81,
+        "r_game": false,
+        "r": 0.81,
+        "target_accuracy_percent": 81,
+        "blank_count": 39,
+        "correct_blanks_nearest": 32,
+        "realized_cell_accuracy_from_board": 0.8205
+      }
+    ]
+  },
+  {
+    "idx": 8,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n7 6 1 4 8 2 1 3 5\n5 4 1 7 3 7 8 2 9\n3 2 8 5 9 1 6 4 7\n1 8 6 7 1 4 3 5 3\n5 3 2 9 5 8 7 7 1\n1 5 7 2 6 3 9 8 4\n2 1 3 9 7 5 4 9 6\n6 7 4 3 2 9 5 1 8\n8 9 5 1 5 6 3 7 2"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.79,
+        "r_game": false,
+        "r": 0.79,
+        "target_accuracy_percent": 79,
+        "blank_count": 36,
+        "correct_blanks_nearest": 28,
+        "realized_cell_accuracy_from_board": 0.7778
+      }
+    ]
+  },
+  {
+    "idx": 9,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n5 2 4 1 9 8 3 7 6\n7 9 7 3 4 2 9 1 5\n8 3 1 6 7 5 9 5 2\n4 1 1 2 8 6 5 3 8\n3 5 2 7 1 9 6 8 4\n6 7 8 5 3 4 1 2 9\n9 6 3 4 2 1 7 5 8\n2 8 8 1 5 3 4 6 1\n1 4 5 8 7 7 2 9 3"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.82,
+        "r_game": false,
+        "r": 0.82,
+        "target_accuracy_percent": 82,
+        "blank_count": 45,
+        "correct_blanks_nearest": 37,
+        "realized_cell_accuracy_from_board": 0.8222
+      }
+    ]
+  },
+  {
+    "idx": 10,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n1 3 9 7 6 2 4 8 5\n4 7 8 9 5 3 1 2 6\n6 5 2 8 4 2 9 3 7\n8 6 4 3 1 7 5 9 2\n5 1 7 4 2 9 4 6 8\n9 2 3 6 8 5 7 1 4\n3 8 1 5 8 6 2 4 9\n2 4 5 1 9 8 6 7 4\n7 9 6 2 3 4 8 5 2"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.85,
+        "r_game": false,
+        "r": 0.85,
+        "target_accuracy_percent": 85,
+        "blank_count": 35,
+        "correct_blanks_nearest": 30,
+        "realized_cell_accuracy_from_board": 0.8571
+      }
+    ]
+  },
+  {
+    "idx": 11,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n7 6 8 2 1 4 1 3 5\n3 1 5 6 7 9 4 2 8\n2 1 5 8 3 5 1 6 7\n4 5 7 9 2 3 6 8 1\n6 3 9 8 8 1 5 4 2\n1 8 3 5 4 6 7 9 3\n8 2 6 1 9 7 3 5 4\n9 7 3 4 5 2 8 1 6\n5 4 1 3 6 8 2 7 9"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.86,
+        "r_game": false,
+        "r": 0.86,
+        "target_accuracy_percent": 86,
+        "blank_count": 36,
+        "correct_blanks_nearest": 31,
+        "realized_cell_accuracy_from_board": 0.8611
+      }
+    ]
+  },
+  {
+    "idx": 12,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n4 9 7 2 2 5 9 6 4\n1 9 3 7 4 6 5 2 8\n6 2 6 8 9 3 4 7 1\n2 3 6 5 1 7 8 4 9\n8 5 5 3 3 9 6 1 7\n9 7 1 7 9 4 3 5 2\n8 6 9 3 5 1 2 9 4\n3 1 9 5 6 2 7 8 5\n5 4 2 9 7 8 1 4 7"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.77,
+        "r_game": false,
+        "r": 0.77,
+        "target_accuracy_percent": 77,
+        "blank_count": 58,
+        "correct_blanks_nearest": 45,
+        "realized_cell_accuracy_from_board": 0.7759
+      }
+    ]
+  },
+  {
+    "idx": 13,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n3 8 4 6 7 5 9 1 2\n6 7 5 2 9 1 4 3 8\n9 2 1 8 4 3 7 6 5\n4 6 8 9 3 2 5 7 1\n5 3 9 7 1 6 8 2 4\n7 1 2 4 5 8 3 9 6\n1 9 7 5 2 4 6 8 3\n2 5 6 3 8 7 1 4 9\n8 4 3 1 6 9 2 5 7"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 57,
+        "correct_blanks_nearest": 57,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 14,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n1 3 2 6 8 9 4 7 5\n7 8 9 4 3 5 3 7 1\n4 5 6 3 1 7 8 1 2\n5 2 4 8 6 1 9 3 7\n8 9 1 7 5 3 2 4 6\n6 8 3 2 9 4 2 5 8\n2 4 8 9 7 6 5 1 3\n3 1 7 5 4 8 6 2 9\n9 6 5 1 3 2 7 8 4"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.92,
+        "r_game": false,
+        "r": 0.92,
+        "target_accuracy_percent": 92,
+        "blank_count": 58,
+        "correct_blanks_nearest": 53,
+        "realized_cell_accuracy_from_board": 0.9138
+      }
+    ]
+  },
+  {
+    "idx": 15,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n2 9 6 7 1 8 5 3 4\n7 4 3 5 9 6 1 2 8\n5 8 1 3 4 2 7 6 9\n6 5 2 9 7 1 5 8 3\n1 7 4 8 2 4 9 5 6\n9 3 8 6 5 5 2 7 1\n8 1 7 2 6 1 4 4 5\n3 2 9 4 8 5 6 1 8\n4 6 5 1 4 8 8 9 2"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.86,
+        "r_game": false,
+        "r": 0.86,
+        "target_accuracy_percent": 86,
+        "blank_count": 58,
+        "correct_blanks_nearest": 50,
+        "realized_cell_accuracy_from_board": 0.8621
+      }
+    ]
+  },
+  {
+    "idx": 16,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n1 2 8 3 6 7 4 9 5\n6 4 7 5 2 9 1 3 8\n5 9 3 4 1 8 2 6 7\n4 5 6 9 3 2 7 8 1\n2 3 9 7 8 1 6 5 4\n8 7 1 6 4 5 3 2 9\n7 8 4 2 9 6 5 1 3\n3 1 2 8 5 4 9 7 6\n9 6 5 1 7 3 8 4 2"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 58,
+        "correct_blanks_nearest": 58,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 17,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n8 9 3 1 7 2 5 4 6\n7 5 6 3 9 4 8 1 2\n2 1 4 6 8 5 3 7 9\n4 8 1 9 6 3 7 2 5\n9 6 7 5 2 8 1 3 4\n5 3 2 4 1 7 6 9 8\n3 2 5 8 4 1 9 6 7\n1 7 9 2 5 6 4 8 3\n6 4 8 7 3 9 2 5 1"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 58,
+        "correct_blanks_nearest": 58,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 18,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n9 5 2 1 4 3 6 8 8\n3 7 4 8 6 9 2 5 1\n8 6 2 7 5 2 3 9 4\n5 1 7 9 3 4 8 2 6\n2 3 9 7 1 8 7 4 5\n6 4 8 2 7 5 9 1 3\n7 9 6 4 3 1 5 3 8\n1 8 3 5 9 6 4 7 2\n4 2 5 4 8 7 1 6 9"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.91,
+        "r_game": false,
+        "r": 0.91,
+        "target_accuracy_percent": 91,
+        "blank_count": 59,
+        "correct_blanks_nearest": 54,
+        "realized_cell_accuracy_from_board": 0.9153
+      }
+    ]
+  },
+  {
+    "idx": 19,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n1 2 7 4 5 3 6 9 8\n9 8 5 6 2 1 4 7 3\n4 6 3 7 8 9 1 2 5\n5 4 8 1 6 2 7 3 9\n3 9 6 8 7 5 2 1 4\n7 1 2 9 3 4 8 5 6\n8 3 4 5 1 7 9 6 2\n2 7 9 3 4 6 5 8 1\n6 5 1 2 9 8 3 4 7"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 55,
+        "correct_blanks_nearest": 55,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 20,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n4 5 2 3 8 9 7 6 1\n9 1 7 6 5 4 2 3 8\n3 6 8 1 2 7 9 4 5\n7 8 1 2 4 6 3 5 9\n2 9 6 5 3 8 4 1 7\n5 4 3 7 9 1 8 2 6\n6 3 5 8 7 2 1 9 4\n8 2 9 4 1 5 6 7 3\n1 7 4 9 6 3 5 8 2"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 56,
+        "correct_blanks_nearest": 56,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 21,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n4 6 1 9 7 8 2 5 3\n7 5 2 3 1 4 9 8 6\n8 3 9 6 5 2 7 4 1\n3 9 4 5 8 7 6 1 2\n2 1 8 4 6 9 5 3 7\n6 7 5 2 3 1 4 9 8\n1 2 6 8 9 5 3 7 4\n5 8 3 7 4 6 1 2 9\n9 4 7 1 2 3 8 6 5"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 58,
+        "correct_blanks_nearest": 58,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 22,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n7 5 2 8 6 3 4 9 1\n3 6 4 9 1 2 8 7 5\n8 1 9 4 5 7 2 3 6\n1 8 3 7 4 6 9 5 2\n5 4 7 3 2 9 6 1 8\n2 9 6 5 8 1 3 4 7\n6 3 8 1 9 5 7 2 4\n4 7 5 2 3 8 1 6 9\n9 2 1 6 7 4 5 8 3"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 58,
+        "correct_blanks_nearest": 58,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 23,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n7 8 1 4 3 2 5 9 7\n2 4 5 9 7 9 7 1 3\n7 4 9 1 6 5 9 4 2\n3 9 2 6 8 4 7 6 2\n2 6 8 3 6 7 9 2 4\n5 7 4 9 2 1 3 6 8\n4 1 6 7 1 8 2 3 5\n9 3 7 5 1 3 4 9 6\n8 5 3 2 4 6 1 7 9"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.78,
+        "r_game": false,
+        "r": 0.78,
+        "target_accuracy_percent": 78,
+        "blank_count": 56,
+        "correct_blanks_nearest": 44,
+        "realized_cell_accuracy_from_board": 0.7857
+      }
+    ]
+  },
+  {
+    "idx": 24,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n6 5 2 7 3 8 9 5 1\n3 5 7 9 2 4 8 2 6\n1 1 8 5 2 7 3 7 4\n1 9 9 2 5 3 6 4 7\n4 2 5 7 7 9 1 3 8\n7 3 6 9 4 2 5 9 2\n8 6 3 4 1 2 7 1 5\n5 9 4 2 8 7 2 6 3\n3 7 1 4 6 5 5 8 9"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.77,
+        "r_game": false,
+        "r": 0.77,
+        "target_accuracy_percent": 77,
+        "blank_count": 57,
+        "correct_blanks_nearest": 44,
+        "realized_cell_accuracy_from_board": 0.7719
+      }
+    ]
+  },
+  {
+    "idx": 25,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n4 2 9 6 5 3 1 7 8\n7 3 6 8 1 4 5 9 2\n1 5 8 9 7 2 3 4 6\n3 9 1 7 8 6 4 2 5\n8 6 2 5 4 1 9 3 7\n5 7 4 2 3 9 8 6 1\n9 1 7 3 2 8 6 5 4\n6 8 5 4 9 7 2 1 3\n2 4 3 1 6 5 7 8 9"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 56,
+        "correct_blanks_nearest": 56,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 26,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n9 8 4 6 5 2 3 1 7\n7 2 7 4 1 8 9 5 4\n1 3 5 4 9 7 2 8 6\n4 7 1 2 8 6 5 3 1\n2 9 3 5 8 4 1 6 9\n8 6 6 1 3 9 7 4 2\n3 4 9 7 6 2 8 2 5\n5 7 8 9 2 3 4 7 2\n7 1 2 8 4 5 6 9 4"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.83,
+        "r_game": false,
+        "r": 0.83,
+        "target_accuracy_percent": 83,
+        "blank_count": 56,
+        "correct_blanks_nearest": 46,
+        "realized_cell_accuracy_from_board": 0.8214
+      }
+    ]
+  },
+  {
+    "idx": 27,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n3 8 6 9 1 7 5 4 2\n2 9 5 4 3 3 8 8 6\n2 7 4 6 6 8 1 3 9\n7 5 2 1 5 6 8 9 3\n4 3 1 7 9 9 2 7 5\n8 6 9 2 3 5 4 1 8\n9 3 3 8 7 4 6 5 1\n5 4 7 3 6 1 9 2 8\n6 1 8 5 9 2 3 7 4"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.85,
+        "r_game": false,
+        "r": 0.85,
+        "target_accuracy_percent": 85,
+        "blank_count": 57,
+        "correct_blanks_nearest": 48,
+        "realized_cell_accuracy_from_board": 0.8421
+      }
+    ]
+  },
+  {
+    "idx": 28,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n3 8 6 9 1 7 5 4 2\n1 9 5 4 2 3 7 8 6\n2 7 4 6 5 8 1 3 9\n7 5 2 1 4 6 8 9 3\n4 3 1 7 8 9 2 6 5\n8 6 9 2 3 5 4 1 7\n9 2 3 8 7 4 6 5 1\n5 4 7 3 6 1 9 2 8\n6 1 8 5 9 2 3 7 4"
+    ],
+    "infos": [
+      {
+        "r_cell": 1.0,
+        "r_game": true,
+        "r": 1.0,
+        "target_accuracy_percent": 100,
+        "blank_count": 57,
+        "correct_blanks_nearest": 57,
+        "realized_cell_accuracy_from_board": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 29,
+    "ys": [
+      "Steps:\n1. Identify the empty cells in the Sudoku board.\n2. Fill the board using row, column, and 3x3 box constraints.\n3. Produce the final solved board.\n\nOutput:\n1 3 1 4 8 5 7 6 2\n4 6 7 3 1 2 1 5 8\n2 5 8 9 6 7 3 2 4\n3 7 4 1 2 6 8 9 5\n8 2 9 5 7 4 6 3 1\n5 1 6 8 9 3 4 2 7\n6 8 5 2 4 9 1 7 3\n7 4 3 6 5 2 2 8 9\n1 1 2 7 4 9 5 4 6"
+    ],
+    "infos": [
+      {
+        "r_cell": 0.87,
+        "r_game": false,
+        "r": 0.87,
+        "target_accuracy_percent": 87,
+        "blank_count": 57,
+        "correct_blanks_nearest": 50,
+        "realized_cell_accuracy_from_board": 0.8772
+      }
+    ]
+  }
+]
