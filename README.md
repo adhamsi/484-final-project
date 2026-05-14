@@ -1,6 +1,6 @@
 # Exploring the Tree of Thoughts Framework Through Hyperparameter Adjustment, Efficiency Analysis, and a Novel Task
 
-## Yusuf Abdelnur, Ayaat Al-Yasseri, Adham Ibrahim
+## Yusuf Abdelnur (ya1653@princeton.edu), Ayaat Al-Yasseri (aa1461@princeton.edu), Adham Ibrahim (ai0492@princeton.edu)
 
 This repository contains the code used for a COS 484, Natural Language Processing, Final Report.
 
@@ -10,4 +10,4 @@ This study seeks to build upon and evaluate the Tree of Thoughts (ToT) framework
 
 This study finds that by adjusting hyperparameters of both the LLM model and ToT framework the efficiency and accuracy of the model can be tuned, and we analyze the performance and cost differences under these modifications. The efficiency analysis confirms that even with the improvements to cost through hyperparameter optimization, there is a significant gap in the effiency between CoT and ToT as measured by the ratio of accuracy to cost per task. Finally, we extended the original ToT framework by introducing Sudoku as a new reasoning benchmark. We find that ToT improves the performance on the Sudoku task in comparison to CoT, both in general board-solving accuracy and individual-cell accuracy.
 
-The results can be found in `/logs/game24`.
+The results can be found in `/logs/game24` and `/logs/sudoku`.
